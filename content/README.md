@@ -42,7 +42,7 @@ On github.io hosting, the site auto-discovers new subfolders and renders them or
 
 For local preview outside github.io hostname, folder discovery falls back to:
 
-- content/apps/_index.json
-- content/blog/_index.json
+- content/apps/index.json
+- content/blog/index.json
 
-If you add a new local entry, also add its slug to the matching `_index.json` file.
+If you add a new entry, also add its slug to the matching `index.json` file.

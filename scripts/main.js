@@ -111,11 +111,11 @@
   }
 
   async function discoverFolderSlugs(rootPath) {
-    const raw = await loadText(rootPath + "/_index.json");
+    const raw = await loadText(rootPath + "/index.json");
     const parsed = JSON.parse(raw);
 
     if (!Array.isArray(parsed.items)) {
-      throw new Error("Invalid index file at " + rootPath + "/_index.json");
+      throw new Error("Invalid index file at " + rootPath + "/index.json");
     }
 
     return parsed.items;
