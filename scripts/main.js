@@ -118,13 +118,27 @@
 
     const owner = hostname.split(".")[0];
     const parts = window.location.pathname.split("/").filter(Boolean);
-    const repo = parts.length ? parts[0] : owner + ".github.io";
-    const basePath = parts.length ? "/" + repo : "";
+    const firstPathPart = parts[0] || "";
+    const isHtmlPath = firstPathPart.endsWith(".html");
+    const repo = !firstPathPart || isHtmlPath ? owner + ".github.io" : firstPathPart;
+    const basePath = repo === owner + ".github.io" ? "" : "/" + repo;
 
     return { owner, repo, basePath };
   }
 
   async function discoverFolderSlugs(rootPath) {
+    // Always prefer the repository index file to avoid API rate-limit/permission failures.
+    try {
+      const fallbackRaw = await loadText(rootPath + "/_index.json");
+      const fallback = JSON.parse(fallbackRaw);
+
+      if (Array.isArray(fallback.items)) {
+        return fallback.items;
+      }
+    } catch (error) {
+      // Fall through to GitHub API discovery when index file is unavailable.
+    }
+
     const repoInfo = detectGitHubRepo();
 
     if (repoInfo) {
@@ -148,15 +162,7 @@
         .sort();
     }
 
-    // Local fallback: manually maintain _index.json while not running on github.io.
-    const fallbackRaw = await loadText(rootPath + "/_index.json");
-    const fallback = JSON.parse(fallbackRaw);
-
-    if (!Array.isArray(fallback.items)) {
-      throw new Error("Invalid fallback index in " + rootPath + "/_index.json");
-    }
-
-    return fallback.items;
+    throw new Error("Unable to discover entries. Check " + rootPath + "/_index.json.");
   }
 
   function createTagNode(tag) {
