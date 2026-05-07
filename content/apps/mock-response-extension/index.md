@@ -36,3 +36,8 @@ A Chrome/Edge extension for API mock testing with request interception through t
 4. Enable or disable per-mock from list or editor.
 5. Use **Enable All** and **Disable All** in the header for global control.
 6. Visit an HTTP/HTTPS page and call matching APIs from that tab.
+
+## Contribute
+https://github.com/kristophor/simplemockresponse
+
+Everyone is welcome to check and fix bugs or submit feature requests.
