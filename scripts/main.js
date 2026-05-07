@@ -110,59 +110,15 @@
     return textOnly.slice(0, 177).trim() + "...";
   }
 
-  function detectGitHubRepo() {
-    const hostname = window.location.hostname.toLowerCase();
-    if (!hostname.endsWith(".github.io")) {
-      return null;
-    }
-
-    const owner = hostname.split(".")[0];
-    const parts = window.location.pathname.split("/").filter(Boolean);
-    const firstPathPart = parts[0] || "";
-    const isHtmlPath = firstPathPart.endsWith(".html");
-    const repo = !firstPathPart || isHtmlPath ? owner + ".github.io" : firstPathPart;
-    const basePath = repo === owner + ".github.io" ? "" : "/" + repo;
-
-    return { owner, repo, basePath };
-  }
-
   async function discoverFolderSlugs(rootPath) {
-    // Always prefer the repository index file to avoid API rate-limit/permission failures.
-    try {
-      const fallbackRaw = await loadText(rootPath + "/_index.json");
-      const fallback = JSON.parse(fallbackRaw);
+    const raw = await loadText(rootPath + "/_index.json");
+    const parsed = JSON.parse(raw);
 
-      if (Array.isArray(fallback.items)) {
-        return fallback.items;
-      }
-    } catch (error) {
-      // Fall through to GitHub API discovery when index file is unavailable.
+    if (!Array.isArray(parsed.items)) {
+      throw new Error("Invalid index file at " + rootPath + "/_index.json");
     }
 
-    const repoInfo = detectGitHubRepo();
-
-    if (repoInfo) {
-      const apiUrl =
-        "https://api.github.com/repos/" +
-        repoInfo.owner +
-        "/" +
-        repoInfo.repo +
-        "/contents/" +
-        rootPath;
-
-      const response = await fetch(apiUrl, { cache: "no-store" });
-      if (!response.ok) {
-        throw new Error("Failed to discover folders at " + rootPath);
-      }
-
-      const payload = await response.json();
-      return payload
-        .filter((item) => item.type === "dir")
-        .map((item) => item.name)
-        .sort();
-    }
-
-    throw new Error("Unable to discover entries. Check " + rootPath + "/_index.json.");
+    return parsed.items;
   }
 
   function createTagNode(tag) {
