@@ -1,137 +1,84 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>KRIS CHEN</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="/stylesheets/w3.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
-    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kris Chen | IT Contractor</title>
+    <meta name="description" content="Kris Chen - IT contractor. App projects, experiments, and blog notes.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="stylesheets/style.css">
 </head>
 <body>
-<!-- Navbar (sit on top) -->
-<div class="w3-top">
-    <ul class="w3-navbar" id="myNavbar">
-        <li><a href="/" class="w3-padding-large w3-text-black">HOME</a></li>
-        <li><a href="http://krischen.wordpress.com" class="w3-padding-large w3-text-black">BLOG</a></li>
-        <li class="w3-hide-small w3-right">
-            <a href="#" class="w3-padding-large w3-text-black w3-hover-red"><i class="fa fa-search"></i></a>
-        </li>
-    </ul>
-</div>
-<div class="bgimg-1 w3-opacity w3-display-container">
-    <div class="w3-display-middle">
-        <span class="w3-center w3-padding-xlarge w3-black w3-xlarge w3-wide w3-animate-opacity">KRIS CHEN</span>
-    </div>
-</div>
+    <div class="atmosphere" aria-hidden="true"></div>
+    <div class="scanlines" aria-hidden="true"></div>
+    <div class="orb orb-a" aria-hidden="true"></div>
+    <div class="orb orb-b" aria-hidden="true"></div>
 
-<!-- Container (About Section) -->
-<div class="w3-content w3-container w3-padding-64" id="about">
-    <h3 class="w3-center">ABOUT ME</h3>
-    <p class="w3-center"><em>Never stop learning</em></p>
-    <p>I am software developer currently working as production support specialist.
-        Front end design and coding is not my strong suit. But I like to learn it anyway, who doesn't like a nice
-        beautiful personal portfolio site.
-        Currently I am learning AngularJS2, ionic, NodeJS + Express + HandlerBars + W3.CSS
-        (somehow Jade just not for me).
-        I am leveraging Amazon Web Service and Azure for my servers and practices.
-    </p>
-    <div class="w3-row">
-        <div class="w3-col m6 w3-center w3-section">
-            <p><b>Kris Chen</b></p>
-            <img src="images/meportrait.png" class="w3-circle" alt="Photo of Me" style="height: 30%; width: 30%">
-        </div>
+    <header class="site-header">
+        <nav class="top-nav">
+            <a href="#top" class="brand">Kris Chen</a>
+            <div class="nav-links">
+                <a href="#apps">Apps</a>
+                <a href="#blog">Blog</a>
+            </div>
+        </nav>
 
-        <!-- Hide this text on small devices -->
-        <div class="w3-col m6 w3-hide-small w3-section">
-            <p>Welcome to my website, This site is built using W3 SCHOOL W3.CSS tempalte.
-                It is actually looking pretty good so far.
-                I didn't edit much except for the content and pictures.
-                I currently working in a corporate environment where everything is block.
-                It becomes very difficult to access outside world where everything is block.
-                As an enthusiastic IT learner, it saddens me not being able to access the resource that I need.
-                This site dosen't do much except for as a small collection of services that I made for myself.
-                Sometimes the service is small and useless, sometimes it is not well implemented.
-                but hey, whatever works. right?
+        <section id="top" class="hero reveal">
+            <p class="eyebrow">IT Contractor</p>
+            <h1>Built to adapt.<br>Ready to deliver.</h1>
+            <p class="hero-copy">
+                I am Kris Chen, a contractor in IT. I take on what the project needs and focus on getting it done.
+                This site is my active space for work snapshots and notes.
             </p>
-        </div>
-    </div>
-</div>
+            <div class="hero-badges">
+                <span>Contract-first</span>
+                <span>Agent-ready</span>
+                <span>Execution-focused</span>
+            </div>
+            <div class="hero-actions">
+                <a href="#apps" class="button button-primary">View Apps</a>
+                <a href="#blog" class="button button-ghost">Read Blog</a>
+            </div>
+        </section>
+    </header>
 
-<!-- Third Parallax Image with Portfolio Text -->
-<div class="bgimg-3 w3-display-container">
-    <div class="w3-display-middle">
-        <span class="w3-xxlarge w3-text-white w3-wide">CONTACT</span>
-    </div>
-</div>
+    <main class="layout">
+        <section id="apps" class="panel reveal">
+            <div class="panel-title-row">
+                <h2>Apps</h2>
+                <p class="panel-note">Managed from markdown folders: <span>content/apps/&lt;slug&gt;/index.md</span></p>
+            </div>
+            <div id="apps-container" class="card-grid" aria-live="polite">
+                <p class="status">Loading app entries...</p>
+            </div>
+        </section>
 
-<!-- Container (Contact Section) -->
-<div class="w3-content w3-container w3-padding-64">
-    <h3 class="w3-center">WHERE I WORK</h3>
-    <p class="w3-center"><em>Don't we all value privacy?</em></p>
-    <div class="w3-container w3-section">
-        <div class="w3-large w3-margin-bottom">
-            <i class="fa fa-map-marker w3-hover-text-black" style="width:30px"></i> TORONTO, ON, CANADA<br>
-            <i class="fa fa-phone w3-hover-text-black" style="width:30px"></i> Phone: 647 313 6988<br>
-            <i class="fa fa-envelope w3-hover-text-black" style="width:30px"> </i> Email: info@krischen.ca<br>
-            <i class="fa fa-linkedin w3-hover-text-black" style="width:30px"> </i>
-            <a href="https://www.linkedin.com/in/krisyhchen">krisyhchen</a><br>
-            <i class="fa fa-twitter w3-hover-text-black" style="width:30px"> </i>
-            <a href="https://twitter.com/krisyhchen">krisyhchen</a><br>
+        <section id="blog" class="panel reveal">
+            <div class="panel-title-row">
+                <h2>Blog</h2>
+                <p class="panel-note">Managed from markdown folders: <span>content/blog/&lt;slug&gt;/index.md</span></p>
+            </div>
 
-        </div>
-    </div>
-    <div class="w3-container">
-        <!-- Add Google Maps -->
-        <div id="googleMap" class="w3-round-large"></div>
-    </div>
+            <div class="blog-controls">
+                <label for="tag-filter">Filter by tag</label>
+                <select id="tag-filter">
+                    <option value="all">All tags</option>
+                </select>
+            </div>
 
-</div>
+            <div id="blog-container" class="stack" aria-live="polite">
+                <p class="status">Loading blog posts...</p>
+            </div>
+        </section>
+    </main>
 
-<footer class="w3-center w3-dark-grey w3-padding-48 w3-hover-black">
-    <p>Powered by <a href="http://www.w3schools.com/w3css/default.asp" title="W3.CSS" target="_blank" class="w3-hover-opacity">w3.css</a>
-        <a href="https://nodejs.org/en/" title="NODEJS" target="_blank" class="w3-hover-opacity">nodejs</a>
-        <a href="http://expressjs.com" title="EXPRESSJS" target="_blank" class="w3-hover-opacity">expressjs</a>
-        <a href="http://handlebarsjs.com/" title="HANDLEBARJS" target="_blank" class="w3-hover-opacity">handlebarsjs</a>
-    </p>
-</footer>
+    <footer class="site-footer">
+        <p>Last content update is driven by your markdown files in this repo.</p>
+    </footer>
 
-<!-- Add Google Maps -->
-<script src="https://maps.googleapis.com/maps/api/js"></script>
-<script>
-    var myCenter = new google.maps.LatLng(43.6534418,-79.3814616);
-
-    function initialize() {
-        var mapProp = {
-            center:myCenter,
-            zoom:12,
-            scrollwheel:false,
-            draggable:false,
-            mapTypeId:google.maps.MapTypeId.ROADMAP
-        };
-
-        var map = new google.maps.Map(document.getElementById("googleMap"),mapProp);
-
-        var marker = new google.maps.Marker({
-            position:myCenter,
-        });
-
-        marker.setMap(map);
-    }
-
-    google.maps.event.addDomListener(window, 'load', initialize);
-
-    // Change style of navbar on scroll
-    window.onscroll = function() {myFunction()};
-    function myFunction() {
-        var navbar = document.getElementById("myNavbar");
-        if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
-            navbar.className = "w3-navbar" + " w3-card-2" + " w3-animate-top" + " w3-white";
-        } else {
-            navbar.className = navbar.className.replace(" w3-card-2 w3-animate-top w3-white", "");
-        }
-    }
-
-</script>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script src="scripts/main.js"></script>
 </body>
 </html>
